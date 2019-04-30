@@ -41,6 +41,7 @@ namespace Torens_van_Hanoi_2
             this.Ring_1 = new System.Windows.Forms.PictureBox();
             this.Pole_2 = new System.Windows.Forms.PictureBox();
             this.Pole_3 = new System.Windows.Forms.PictureBox();
+            this.Counter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Ring_7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pole_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ring_8)).BeginInit();
@@ -70,7 +71,7 @@ namespace Torens_van_Hanoi_2
             // Pole_1
             // 
             this.Pole_1.Image = global::Torens_van_Hanoi_2.Properties.Resources.Pole;
-            this.Pole_1.Location = new System.Drawing.Point(91, 97);
+            this.Pole_1.Location = new System.Drawing.Point(91, 181);
             this.Pole_1.Name = "Pole_1";
             this.Pole_1.Size = new System.Drawing.Size(10, 110);
             this.Pole_1.TabIndex = 0;
@@ -170,7 +171,7 @@ namespace Torens_van_Hanoi_2
             // Pole_2
             // 
             this.Pole_2.Image = global::Torens_van_Hanoi_2.Properties.Resources.Pole;
-            this.Pole_2.Location = new System.Drawing.Point(341, 97);
+            this.Pole_2.Location = new System.Drawing.Point(341, 181);
             this.Pole_2.Name = "Pole_2";
             this.Pole_2.Size = new System.Drawing.Size(10, 110);
             this.Pole_2.TabIndex = 9;
@@ -179,17 +180,28 @@ namespace Torens_van_Hanoi_2
             // Pole_3
             // 
             this.Pole_3.Image = global::Torens_van_Hanoi_2.Properties.Resources.Pole;
-            this.Pole_3.Location = new System.Drawing.Point(591, 97);
+            this.Pole_3.Location = new System.Drawing.Point(591, 181);
             this.Pole_3.Name = "Pole_3";
             this.Pole_3.Size = new System.Drawing.Size(10, 110);
             this.Pole_3.TabIndex = 10;
             this.Pole_3.TabStop = false;
+            // 
+            // Counter
+            // 
+            this.Counter.AutoSize = true;
+            this.Counter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Counter.Location = new System.Drawing.Point(20, 24);
+            this.Counter.Name = "Counter";
+            this.Counter.Size = new System.Drawing.Size(86, 24);
+            this.Counter.TabIndex = 11;
+            this.Counter.Text = "Moves: 0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 292);
+            this.Controls.Add(this.Counter);
             this.Controls.Add(this.Ring_1);
             this.Controls.Add(this.Ring_2);
             this.Controls.Add(this.Ring_3);
@@ -203,7 +215,8 @@ namespace Torens_van_Hanoi_2
             this.Controls.Add(this.Pole_3);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.Text = "Torens van Hanoi 2";
             ((System.ComponentModel.ISupportInitialize)(this.Ring_7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pole_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ring_8)).EndInit();
@@ -216,6 +229,7 @@ namespace Torens_van_Hanoi_2
             ((System.ComponentModel.ISupportInitialize)(this.Pole_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pole_3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -232,6 +246,7 @@ namespace Torens_van_Hanoi_2
         private System.Windows.Forms.PictureBox Ring_1;
         private System.Windows.Forms.PictureBox Pole_2;
         private System.Windows.Forms.PictureBox Pole_3;
+        private Label Counter;
     }
 }
 

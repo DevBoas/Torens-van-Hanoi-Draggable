@@ -21,6 +21,7 @@ namespace Torens_van_Hanoi_2
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 2
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 3
         };
+
         public Form1()
         {
             InitializeComponent();
@@ -108,24 +109,33 @@ namespace Torens_van_Hanoi_2
             }
             return pole;
         }
-
+        
+        private void addMove()
+        {
+            int CurrentMoves = System.Convert.ToInt32(Counter.Text.Substring(6));
+            CurrentMoves++;
+            Counter.Text = "Moves: " + CurrentMoves.ToString();
+        }
         private Boolean checkInSquare(Control activeControl)
         {
             Point a = activeControl.Location;
             PictureBox ring = activeControl as PictureBox;
+            PictureBox pole = null;
+            PictureBox m_pole = null;
+            int HitBox = 125;
 
-            int p1_x_l_top = Pole_1.Location.X - 125 - (activeControl.Size.Width / 2);
-            int p1_x_r_top = Pole_1.Location.X + 125 + (activeControl.Size.Width / 2); 
+            int p1_x_l_top = Pole_1.Location.X - HitBox - (activeControl.Size.Width / 2);
+            int p1_x_r_top = Pole_1.Location.X + HitBox + (activeControl.Size.Width / 2); 
             int p1_y_top = Pole_1.Location.Y - 50;
             int p1_y_bot = Pole_1.Location.Y + Pole_1.Size.Height;
 
-            int p2_x_l_top = Pole_2.Location.X - 125 - (activeControl.Size.Width / 2);
-            int p2_x_r_top = Pole_2.Location.X + 125 + (activeControl.Size.Width / 2);
+            int p2_x_l_top = Pole_2.Location.X - HitBox - (activeControl.Size.Width / 2);
+            int p2_x_r_top = Pole_2.Location.X + HitBox + (activeControl.Size.Width / 2);
             int p2_y_top = Pole_2.Location.Y - 50;
             int p2_y_bot = Pole_2.Location.Y + Pole_1.Size.Height;
 
-            int p3_x_l_top = Pole_3.Location.X - 125 - (activeControl.Size.Width / 2);
-            int p3_x_r_top = Pole_3.Location.X + 125 + (activeControl.Size.Width / 2);
+            int p3_x_l_top = Pole_3.Location.X - HitBox - (activeControl.Size.Width / 2);
+            int p3_x_r_top = Pole_3.Location.X + HitBox + (activeControl.Size.Width / 2);
             int p3_y_top = Pole_3.Location.Y - 50;
             int p3_y_bot = Pole_2.Location.Y + Pole_1.Size.Height;
 
@@ -133,13 +143,14 @@ namespace Torens_van_Hanoi_2
             //MessageBox.Show(a.X.ToString() + " > " + x_l_top.ToString());
             //MessageBox.Show(a.X.ToString() + " < " + x_r_top.ToString());
             //MessageBox.Show(a.Y.ToString() + " < " + y_top.ToString());
-
+            
             // Pole 1 square
             if ((a.X >= p1_x_l_top) && (a.X <= p1_x_r_top) && (a.Y >= p1_y_top) && a.Y <= p1_y_bot)
             {
                 ///MessageBox.Show("Drag is in dropbox of pole_1");
                 int poleInt = RemoveRing(ring);
-                PictureBox pole = matchPole(poleInt);
+                pole = matchPole(poleInt);
+                m_pole = Pole_1;
                 Boolean possible = AddRing(Pole_1, ring);
                 if (possible)
                     inSquare = true;
@@ -153,7 +164,8 @@ namespace Torens_van_Hanoi_2
                 ///MessageBox.Show("Drag is in dropbox of pole_2");
                 //RemoveRing(ring);
                 int poleInt = RemoveRing(ring);
-                PictureBox pole = matchPole(poleInt);
+                pole = matchPole(poleInt);
+                m_pole = Pole_2;
                 Boolean possible = AddRing(Pole_2, ring);
                 if (possible)
                     inSquare = true;
@@ -166,13 +178,17 @@ namespace Torens_van_Hanoi_2
             {
                 ///MessageBox.Show("Drag is in dropbox of pole_3");
                 int poleInt = RemoveRing(ring);
-                PictureBox pole = matchPole(poleInt);
+                pole = matchPole(poleInt);
+                m_pole = Pole_3;
                 Boolean possible = AddRing(Pole_3, ring);
                 if (possible)
                     inSquare = true;
                 else
                     AddRing(pole, ring);
             }
+
+            if ((pole != null) && (m_pole != null) &&(pole != m_pole) && inSquare)
+                addMove();
 
             return inSquare;
         }
@@ -189,7 +205,6 @@ namespace Torens_van_Hanoi_2
         {
             if (activeControl == null || activeControl != sender)
                 return;
-
             var location = activeControl.Location;
             location.Offset(e.Location.X - previousLocation.X, e.Location.Y - previousLocation.Y);
             activeControl.Location = location;
