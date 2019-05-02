@@ -17,10 +17,14 @@ namespace Torens_van_Hanoi_2
     {
         int[][] jaggedArray3 =
         {
-            new int[] { 0, 0, 0, 0, 0, 0, 0, 0}, // tower 1
+            new int[] { 0, 0, 0, 0, 0, 0, 0, 0},  // tower 1
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 2
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 3
         };
+
+        private Control activeControl;
+        private Point previousLocation;
+        private Point PickupPoint;
 
         public Form1()
         {
@@ -61,10 +65,6 @@ namespace Torens_van_Hanoi_2
             }
             return c * ring.Height;
         }
-
-        private Control activeControl;
-        private Point previousLocation;
-        private Point PickupPoint;
 
         private Boolean CanPickUp(Control con)
         {
@@ -238,6 +238,26 @@ namespace Torens_van_Hanoi_2
             int x_size = (ring.Size.Width/2) - (pole.Size.Width / 2);
             ring.Location = new Point((x_position - x_size) , y_position + y_size);
             return true;
+        }
+
+        private void Btn_Reset_Click(object sender, EventArgs e)
+        {
+            Counter.Text = "Moves: 0";
+            for (int i = 0; i < jaggedArray3.Length; i++)
+            {
+                for (int y = 0; y < jaggedArray3[i].Length; y++)
+                {
+                    jaggedArray3[i][y] = 0;
+                }
+            }
+            AddRing(Pole_1, Ring_8);
+            AddRing(Pole_1, Ring_7);
+            AddRing(Pole_1, Ring_6);
+            AddRing(Pole_1, Ring_5);
+            AddRing(Pole_1, Ring_4);
+            AddRing(Pole_1, Ring_3);
+            AddRing(Pole_1, Ring_2);
+            AddRing(Pole_1, Ring_1);
         }
     }
 }

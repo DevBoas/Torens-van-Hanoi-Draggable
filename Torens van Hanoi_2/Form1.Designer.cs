@@ -42,6 +42,7 @@ namespace Torens_van_Hanoi_2
             this.Pole_2 = new System.Windows.Forms.PictureBox();
             this.Pole_3 = new System.Windows.Forms.PictureBox();
             this.Counter = new System.Windows.Forms.Label();
+            this.Btn_Reset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Ring_7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pole_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ring_8)).BeginInit();
@@ -196,11 +197,22 @@ namespace Torens_van_Hanoi_2
             this.Counter.TabIndex = 11;
             this.Counter.Text = "Moves: 0";
             // 
+            // Btn_Reset
+            // 
+            this.Btn_Reset.Location = new System.Drawing.Point(23, 51);
+            this.Btn_Reset.Name = "Btn_Reset";
+            this.Btn_Reset.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Reset.TabIndex = 12;
+            this.Btn_Reset.Text = "Reset";
+            this.Btn_Reset.UseVisualStyleBackColor = true;
+            this.Btn_Reset.Click += new System.EventHandler(this.Btn_Reset_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 292);
+            this.Controls.Add(this.Btn_Reset);
             this.Controls.Add(this.Counter);
             this.Controls.Add(this.Ring_1);
             this.Controls.Add(this.Ring_2);
@@ -247,6 +259,7 @@ namespace Torens_van_Hanoi_2
         private System.Windows.Forms.PictureBox Pole_2;
         private System.Windows.Forms.PictureBox Pole_3;
         private Label Counter;
+        private Button Btn_Reset;
     }
 }
 
