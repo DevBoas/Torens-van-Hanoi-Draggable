@@ -124,4 +124,28 @@
   <data name="Ring" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ring.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Ring1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ring1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ring2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ring2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ring3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ring3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ring4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ring4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ring5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ring5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ring6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ring6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ring7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ring7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ring8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ring8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

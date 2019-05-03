@@ -85,5 +85,29 @@
   <ItemGroup>
     <None Include="Resources\Ring.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ring8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ring7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ring6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ring5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ring3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ring2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ring1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ring4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
