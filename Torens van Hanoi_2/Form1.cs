@@ -17,7 +17,7 @@ namespace Torens_van_Hanoi_2
     {
         int[][] jaggedArray3 =
         {
-            new int[] { 0, 0, 0, 0, 0, 0, 0, 0},  // tower 1
+            new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 1
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 2
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 3
         };
@@ -92,7 +92,6 @@ namespace Torens_van_Hanoi_2
             activeControl = sender as Control;
             PickupPoint = activeControl.Location;
             previousLocation = e.Location;
-            //Cursor = Cursors.Hand;
         }
 
         private PictureBox matchPole(int num)
@@ -120,9 +119,11 @@ namespace Torens_van_Hanoi_2
         private Boolean checkInSquare(Control activeControl)
         {
             Point a = activeControl.Location;
+
             PictureBox ring = activeControl as PictureBox;
             PictureBox pole = null;
             PictureBox m_pole = null;
+
             int HitBox = 125;
 
             int p1_x_l_top = Pole_1.Location.X - HitBox - (activeControl.Size.Width / 2);
@@ -141,9 +142,6 @@ namespace Torens_van_Hanoi_2
             int p3_y_bot = Pole_2.Location.Y + Pole_1.Size.Height;
 
             Boolean inSquare = false;
-            //MessageBox.Show(a.X.ToString() + " > " + x_l_top.ToString());
-            //MessageBox.Show(a.X.ToString() + " < " + x_r_top.ToString());
-            //MessageBox.Show(a.Y.ToString() + " < " + y_top.ToString());
             
             // Pole 1 square
             if ((a.X >= p1_x_l_top) && (a.X <= p1_x_r_top) && (a.Y >= p1_y_top) && a.Y <= p1_y_bot)
@@ -163,7 +161,6 @@ namespace Torens_van_Hanoi_2
             if ((a.X >= p2_x_l_top) && (a.X <= p2_x_r_top) && (a.Y >= p2_y_top) && a.Y <= p2_y_bot)
             {
                 ///MessageBox.Show("Drag is in dropbox of pole_2");
-                //RemoveRing(ring);
                 int poleInt = RemoveRing(ring);
                 pole = matchPole(poleInt);
                 m_pole = Pole_2;
@@ -199,8 +196,6 @@ namespace Torens_van_Hanoi_2
             if (activeControl != null && !checkInSquare(activeControl))
                 activeControl.Location = PickupPoint;
             activeControl = null;
-            //Cursor = Cursors.Default;
-            //MessageBox.Show("Check in region");
         }
 
         void Ring_MouseMove(object sender, MouseEventArgs e)
