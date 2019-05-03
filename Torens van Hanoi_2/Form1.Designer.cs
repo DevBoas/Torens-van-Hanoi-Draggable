@@ -226,6 +226,9 @@ namespace Torens_van_Hanoi_2
             this.Controls.Add(this.Pole_1);
             this.Controls.Add(this.Pole_3);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(758, 331);
+            this.MinimumSize = new System.Drawing.Size(758, 331);
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Torens van Hanoi 2";

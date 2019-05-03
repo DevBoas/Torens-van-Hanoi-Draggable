@@ -116,6 +116,7 @@ namespace Torens_van_Hanoi_2
             CurrentMoves++;
             Counter.Text = "Moves: " + CurrentMoves.ToString();
         }
+
         private Boolean checkInSquare(Control activeControl)
         {
             Point a = activeControl.Location;
@@ -192,6 +193,7 @@ namespace Torens_van_Hanoi_2
 
             return inSquare;
         }
+
         void Ring_MouseUp(object sender, MouseEventArgs e)
         {
             if (activeControl != null && !checkInSquare(activeControl))
@@ -220,7 +222,7 @@ namespace Torens_van_Hanoi_2
                     if (jaggedArray3[i][y] == RingNum)
                     {
                         jaggedArray3[i][y] = 0;
-                        return i+1;
+                        return i + 1;
                     }
                 }
             }
@@ -235,7 +237,7 @@ namespace Torens_van_Hanoi_2
             int y_position = pole.Location.Y - offset;
             int y_size = pole.Size.Height - ring.Size.Height;
             int x_position = pole.Location.X;
-            int x_size = (ring.Size.Width/2) - (pole.Size.Width / 2);
+            int x_size = (ring.Size.Width / 2) - (pole.Size.Width / 2);
             ring.Location = new Point((x_position - x_size) , y_position + y_size);
             return true;
         }
@@ -243,13 +245,11 @@ namespace Torens_van_Hanoi_2
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
             Counter.Text = "Moves: 0";
+
             for (int i = 0; i < jaggedArray3.Length; i++)
-            {
                 for (int y = 0; y < jaggedArray3[i].Length; y++)
-                {
                     jaggedArray3[i][y] = 0;
-                }
-            }
+
             AddRing(Pole_1, Ring_8);
             AddRing(Pole_1, Ring_7);
             AddRing(Pole_1, Ring_6);
@@ -259,5 +259,6 @@ namespace Torens_van_Hanoi_2
             AddRing(Pole_1, Ring_2);
             AddRing(Pole_1, Ring_1);
         }
+
     }
 }
