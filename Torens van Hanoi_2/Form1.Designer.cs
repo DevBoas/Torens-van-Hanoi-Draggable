@@ -79,7 +79,7 @@ namespace Torens_van_Hanoi_2
             // Ring_1
             // 
             this.Ring_1.Image = global::Torens_van_Hanoi_2.Properties.Resources.Ring1;
-            this.Ring_1.Location = new System.Drawing.Point(23, 85);
+            this.Ring_1.Location = new System.Drawing.Point(24, 85);
             this.Ring_1.Name = "Ring_1";
             this.Ring_1.Size = new System.Drawing.Size(20, 10);
             this.Ring_1.TabIndex = 8;

@@ -22,9 +22,8 @@ namespace Torens_van_Hanoi_2
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 3
         };
 
-        private Control activeControl;
-        private Point previousLocation;
-        private Point PickupPoint;
+        private Control dragging;
+        private Point BackPoint;
 
         public Form1()
         {
@@ -83,16 +82,7 @@ namespace Torens_van_Hanoi_2
                 }
             }
             return true;
-        }
-
-        void Ring_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (!CanPickUp(sender as Control))
-                return;
-            activeControl = sender as Control;
-            PickupPoint = activeControl.Location;
-            previousLocation = e.Location;
-        }
+        }  
 
         private PictureBox matchPole(int num)
         {
@@ -191,20 +181,32 @@ namespace Torens_van_Hanoi_2
             return inSquare;
         }
 
+        void Ring_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!CanPickUp(sender as Control))
+                return;
+            BackPoint = (sender as Control).Location;
+            dragging = sender as Control;
+        }
+
         void Ring_MouseUp(object sender, MouseEventArgs e)
         {
-            if (activeControl != null && !checkInSquare(activeControl))
-                activeControl.Location = PickupPoint;
-            activeControl = null;
+            if (dragging != null && !checkInSquare(dragging))
+                dragging.Location = BackPoint;
+            dragging = null;
         }
 
         void Ring_MouseMove(object sender, MouseEventArgs e)
         {
-            if (activeControl == null || activeControl != sender)
+            if (dragging == null || dragging != sender)
                 return;
-            var location = activeControl.Location;
-            location.Offset(e.Location.X - previousLocation.X, e.Location.Y - previousLocation.Y);
-            activeControl.Location = location;
+
+            int halfX = (dragging.Size.Width / 2);
+            int xOffset = (halfX - e.Location.X);
+            int halfY = (dragging.Size.Height / 2);
+            int yOffset = (halfY - e.Location.Y);
+
+            dragging.Location = new Point(dragging.Location.X - xOffset, dragging.Location.Y - yOffset);
         }
 
         private int RemoveRing(PictureBox ring)
