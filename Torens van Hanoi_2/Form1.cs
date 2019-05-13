@@ -1,21 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-// This is the code for your desktop app.
-// Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
 
 namespace Torens_van_Hanoi_2
 {
     public partial class Form1 : Form
     {
-        int[][] jaggedArray3 =
+        private int[][] jaggedArray3 =
         {
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 1
             new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // tower 2
@@ -28,14 +19,14 @@ namespace Torens_van_Hanoi_2
         public Form1()
         {
             InitializeComponent();
-            AddRing(Pole_1, Ring_8);
-            AddRing(Pole_1, Ring_7);
-            AddRing(Pole_1, Ring_6);
-            AddRing(Pole_1, Ring_5);
-            AddRing(Pole_1, Ring_4);
-            AddRing(Pole_1, Ring_3);
-            AddRing(Pole_1, Ring_2);
-            AddRing(Pole_1, Ring_1);
+            resetRings();
+        }
+        
+        private void resetRings()
+        {
+            PictureBox[] rings = { Ring_8, Ring_7, Ring_6, Ring_5, Ring_4, Ring_3, Ring_2, Ring_1 };
+            for (int i = 0; i < rings.Length; i++)
+                AddRing(Pole_1, rings[i]);
         }
 
         private int getOffset(PictureBox pole, PictureBox ring)
@@ -175,7 +166,7 @@ namespace Torens_van_Hanoi_2
                     AddRing(pole, ring);
             }
 
-            if ((pole != null) && (m_pole != null) &&(pole != m_pole) && inSquare)
+            if ((pole != null) && (m_pole != null) && (pole != m_pole) && inSquare)
                 addMove();
 
             return inSquare;
@@ -183,10 +174,12 @@ namespace Torens_van_Hanoi_2
 
         void Ring_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!CanPickUp(sender as Control))
+            Control c = (sender as Control);
+            if (!CanPickUp(c))
                 return;
-            BackPoint = (sender as Control).Location;
-            dragging = sender as Control;
+            c.BringToFront();
+            BackPoint = c.Location;
+            dragging = c;
         }
 
         void Ring_MouseUp(object sender, MouseEventArgs e)
@@ -242,19 +235,10 @@ namespace Torens_van_Hanoi_2
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
             Counter.Text = "Moves: 0";
-
             for (int i = 0; i < jaggedArray3.Length; i++)
                 for (int y = 0; y < jaggedArray3[i].Length; y++)
                     jaggedArray3[i][y] = 0;
-
-            AddRing(Pole_1, Ring_8);
-            AddRing(Pole_1, Ring_7);
-            AddRing(Pole_1, Ring_6);
-            AddRing(Pole_1, Ring_5);
-            AddRing(Pole_1, Ring_4);
-            AddRing(Pole_1, Ring_3);
-            AddRing(Pole_1, Ring_2);
-            AddRing(Pole_1, Ring_1);
+            resetRings();
         }
 
     }
