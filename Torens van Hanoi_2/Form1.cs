@@ -16,7 +16,6 @@ namespace Torens_van_Hanoi_2
         private Control dragging;
         private Point BackPoint;
 
-
         //globals
         private readonly int HitBox = 125;
 
