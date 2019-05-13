@@ -16,6 +16,10 @@ namespace Torens_van_Hanoi_2
         private Control dragging;
         private Point BackPoint;
 
+
+        //globals
+        private readonly int HitBox = 125;
+
         public Form1()
         {
             InitializeComponent();
@@ -90,11 +94,10 @@ namespace Torens_van_Hanoi_2
             return pole;
         }
         
-        private void addMove()
+        private void MovesCounter_Add()
         {
             int CurrentMoves = System.Convert.ToInt32(Counter.Text.Substring(6));
-            CurrentMoves++;
-            Counter.Text = "Moves: " + CurrentMoves.ToString();
+            Counter.Text = "Moves: " + (CurrentMoves+=1).ToString();
         }
 
         //new
@@ -104,12 +107,11 @@ namespace Torens_van_Hanoi_2
             Point a = ring.Location;
             // we want to calc from the center of the loc
             a = (a + new Size(ring.Size.Width / 2, 0));
-            int HitBox = 125;
-            int p_x_l_top = poles[index].Location.X - HitBox;
-            int p_x_r_top = poles[index].Location.X + HitBox;
-            int p_y_top = poles[index].Location.Y - 50;
+            int p_x_l = poles[index].Location.X - HitBox;
+            int p_x_r = poles[index].Location.X + HitBox;
+            int p_y_top = poles[index].Location.Y - poles[index].Size.Height/2;
             int p_y_bot = poles[index].Location.Y + poles[index].Size.Height;
-            if ((a.X >= p_x_l_top) && (a.X <= p_x_r_top) && (a.Y >= p_y_top) && a.Y <= p_y_bot)
+            if ((a.X >= p_x_l) && (a.X <= p_x_r) && (a.Y >= p_y_top) && a.Y <= p_y_bot)
                 return poles[index];
             if (index == (poles.Length - 1))
                 return CurrentPole;
@@ -118,6 +120,7 @@ namespace Torens_van_Hanoi_2
         }
 
         //old
+        /*
         private PictureBox WhichPole(PictureBox CurrentPole, PictureBox ring)
         {
             Point a = ring.Location;
@@ -148,11 +151,12 @@ namespace Torens_van_Hanoi_2
                 CurrentPole = Pole_3;
             return CurrentPole;
         }
+        */
 
         private Boolean checkInSquare(Control activeControl)
-        {
-            Point a = activeControl.Location;
+        { 
             Boolean possible;
+
             PictureBox ring = activeControl as PictureBox;
             PictureBox current_pole;
             PictureBox targ_pole;
@@ -166,7 +170,7 @@ namespace Torens_van_Hanoi_2
             if (!possible)
                 AddRing(current_pole, ring);
             else if (current_pole != targ_pole)
-                addMove();
+                MovesCounter_Add();
 
             return possible;
         }
@@ -235,8 +239,8 @@ namespace Torens_van_Hanoi_2
         {
             Counter.Text = "Moves: 0";
             for (int i = 0; i < jaggedArray3.Length; i++)
-                for (int y = 0; y < jaggedArray3[i].Length; y++)
-                    jaggedArray3[i][y] = 0;
+                for (int j = 0; j < jaggedArray3[j].Length; j++)
+                    jaggedArray3[i][j] = 0;
             SetupRings();
         }
 
