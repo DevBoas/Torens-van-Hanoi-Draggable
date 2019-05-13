@@ -97,80 +97,57 @@ namespace Torens_van_Hanoi_2
             Counter.Text = "Moves: " + CurrentMoves.ToString();
         }
 
-        private Boolean checkInSquare(Control activeControl)
+        private PictureBox WhichPole(PictureBox CurrentPole, PictureBox ring)
         {
-            Point a = activeControl.Location;
-            Boolean possible = false;
+            Point a = ring.Location;
 
-            PictureBox ring = activeControl as PictureBox;
-            PictureBox pole = null;
-            PictureBox targ_pole = null;
-            
             int HitBox = 125;
 
-            int p1_x_l_top = Pole_1.Location.X - HitBox - (activeControl.Size.Width / 2);
-            int p1_x_r_top = Pole_1.Location.X + HitBox + (activeControl.Size.Width / 2); 
+            int p1_x_l_top = Pole_1.Location.X - HitBox - (ring.Size.Width / 2);
+            int p1_x_r_top = Pole_1.Location.X + HitBox + (ring.Size.Width / 2);
             int p1_y_top = Pole_1.Location.Y - 50;
             int p1_y_bot = Pole_1.Location.Y + Pole_1.Size.Height;
 
-            int p2_x_l_top = Pole_2.Location.X - HitBox - (activeControl.Size.Width / 2);
-            int p2_x_r_top = Pole_2.Location.X + HitBox + (activeControl.Size.Width / 2);
+            int p2_x_l_top = Pole_2.Location.X - HitBox - (ring.Size.Width / 2);
+            int p2_x_r_top = Pole_2.Location.X + HitBox + (ring.Size.Width / 2);
             int p2_y_top = Pole_2.Location.Y - 50;
             int p2_y_bot = Pole_2.Location.Y + Pole_1.Size.Height;
 
-            int p3_x_l_top = Pole_3.Location.X - HitBox - (activeControl.Size.Width / 2);
-            int p3_x_r_top = Pole_3.Location.X + HitBox + (activeControl.Size.Width / 2);
+            int p3_x_l_top = Pole_3.Location.X - HitBox - (ring.Size.Width / 2);
+            int p3_x_r_top = Pole_3.Location.X + HitBox + (ring.Size.Width / 2);
             int p3_y_top = Pole_3.Location.Y - 50;
             int p3_y_bot = Pole_2.Location.Y + Pole_1.Size.Height;
 
-            Boolean inSquare = false;
-            
-            // Pole 1 square
             if ((a.X >= p1_x_l_top) && (a.X <= p1_x_r_top) && (a.Y >= p1_y_top) && a.Y <= p1_y_bot)
-            {
-                ///MessageBox.Show("Drag is in dropbox of pole_1");
-                int poleInt = RemoveRing(ring);
-                pole = matchPole(poleInt);
-                targ_pole = Pole_1;
-                possible = AddRing(Pole_1, ring);
-                if (possible)
-                    inSquare = true;
-                else
-                    AddRing(pole, ring);
-            }
+                CurrentPole = Pole_1;
+            else if ((a.X >= p2_x_l_top) && (a.X <= p2_x_r_top) && (a.Y >= p2_y_top) && a.Y <= p2_y_bot)
+                CurrentPole = Pole_2;
+            else if ((a.X >= p3_x_l_top) && (a.X <= p3_x_r_top) && (a.Y >= p3_y_top) && a.Y <= p3_y_bot)
 
-            // Pole 2 square
-            if ((a.X >= p2_x_l_top) && (a.X <= p2_x_r_top) && (a.Y >= p2_y_top) && a.Y <= p2_y_bot)
-            {
-                ///MessageBox.Show("Drag is in dropbox of pole_2");
-                int poleInt = RemoveRing(ring);
-                pole = matchPole(poleInt);
-                targ_pole = Pole_2;
-                possible = AddRing(Pole_2, ring);
-                if (possible)
-                    inSquare = true;
-                else
-                    AddRing(pole, ring);
-            }
+                CurrentPole = Pole_3;
+            return CurrentPole;
+        }
 
-            // Pole 3 square
-            if ((a.X >= p3_x_l_top) && (a.X <= p3_x_r_top) && (a.Y >= p3_y_top) && a.Y <= p3_y_bot)
-            {
-                ///MessageBox.Show("Drag is in dropbox of pole_3");
-                int poleInt = RemoveRing(ring);
-                pole = matchPole(poleInt);
-                targ_pole = Pole_3;
-                possible = AddRing(Pole_3, ring);
-                if (possible)
-                    inSquare = true;
-                else
-                    AddRing(pole, ring);
-            }
+        private Boolean checkInSquare(Control activeControl)
+        {
+            Point a = activeControl.Location;
+            Boolean possible;
+            PictureBox ring = activeControl as PictureBox;
+            PictureBox current_pole;
+            PictureBox targ_pole;
 
-            if (possible && (pole != targ_pole))
+            int poleInt = RemoveRing(ring);
+            PictureBox CurrentPole = matchPole(poleInt);
+            current_pole = matchPole(poleInt);
+            targ_pole = WhichPole(CurrentPole, ring);
+            possible = AddRing(targ_pole, ring);
+
+            if (!possible)
+                AddRing(current_pole, ring);
+            else if (current_pole != targ_pole)
                 addMove();
 
-            return inSquare;
+            return possible;
         }
 
         void Ring_MouseDown(object sender, MouseEventArgs e)
