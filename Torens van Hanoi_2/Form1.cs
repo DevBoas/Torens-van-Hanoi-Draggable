@@ -239,7 +239,7 @@ namespace Torens_van_Hanoi_2
         {
             Counter.Text = "Moves: 0";
             for (int i = 0; i < jaggedArray3.Length; i++)
-                for (int j = 0; j < jaggedArray3[j].Length; j++)
+                for (int j = 0; j < jaggedArray3[i].Length; j++)
                     jaggedArray3[i][j] = 0;
             SetupRings();
         }
