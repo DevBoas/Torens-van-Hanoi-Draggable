@@ -109,7 +109,7 @@ namespace Torens_van_Hanoi_2
             int p_y_bot = poles[index].Location.Y + poles[index].Size.Height;
             if ((a.X >= p_x_l_top) && (a.X <= p_x_r_top) && (a.Y >= p_y_top) && a.Y <= p_y_bot)
                 return poles[index];
-            if (index == 2)
+            if (index == (poles.Length - 1))
                 return CurrentPole;
             index++;
             return WhichPole2(CurrentPole, ring, index);
