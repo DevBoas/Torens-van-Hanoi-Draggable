@@ -97,6 +97,7 @@ namespace Torens_van_Hanoi_2
             Counter.Text = "Moves: " + CurrentMoves.ToString();
         }
 
+        //new
         private PictureBox WhichPole2(PictureBox CurrentPole, PictureBox ring, int index)
         {
             PictureBox[] poles = { Pole_1, Pole_2, Pole_3 };
