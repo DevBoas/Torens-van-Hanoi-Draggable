@@ -111,12 +111,12 @@ namespace Torens_van_Hanoi_2
             int p2_x_l_top = Pole_2.Location.X - HitBox - (ring.Size.Width / 2);
             int p2_x_r_top = Pole_2.Location.X + HitBox + (ring.Size.Width / 2);
             int p2_y_top = Pole_2.Location.Y - 50;
-            int p2_y_bot = Pole_2.Location.Y + Pole_1.Size.Height;
+            int p2_y_bot = Pole_2.Location.Y + Pole_2.Size.Height;
 
             int p3_x_l_top = Pole_3.Location.X - HitBox - (ring.Size.Width / 2);
             int p3_x_r_top = Pole_3.Location.X + HitBox + (ring.Size.Width / 2);
             int p3_y_top = Pole_3.Location.Y - 50;
-            int p3_y_bot = Pole_2.Location.Y + Pole_1.Size.Height;
+            int p3_y_bot = Pole_3.Location.Y + Pole_3.Size.Height;
 
             if ((a.X >= p1_x_l_top) && (a.X <= p1_x_r_top) && (a.Y >= p1_y_top) && a.Y <= p1_y_bot)
                 CurrentPole = Pole_1;
