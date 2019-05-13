@@ -102,6 +102,8 @@ namespace Torens_van_Hanoi_2
         {
             PictureBox[] poles = { Pole_1, Pole_2, Pole_3 };
             Point a = ring.Location;
+            // we want to calc from the center of the loc
+            a = (a + new Size(ring.Size.Width / 2, 0));
             int HitBox = 125;
             int p_x_l_top = poles[index].Location.X - HitBox;
             int p_x_r_top = poles[index].Location.X + HitBox;
