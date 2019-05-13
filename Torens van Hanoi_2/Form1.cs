@@ -19,10 +19,10 @@ namespace Torens_van_Hanoi_2
         public Form1()
         {
             InitializeComponent();
-            resetRings();
+            SetupRings();
         }
         
-        private void resetRings()
+        private void SetupRings()
         {
             PictureBox[] rings = { Ring_8, Ring_7, Ring_6, Ring_5, Ring_4, Ring_3, Ring_2, Ring_1 };
             for (int i = 0; i < rings.Length; i++)
@@ -238,7 +238,7 @@ namespace Torens_van_Hanoi_2
             for (int i = 0; i < jaggedArray3.Length; i++)
                 for (int y = 0; y < jaggedArray3[i].Length; y++)
                     jaggedArray3[i][y] = 0;
-            resetRings();
+            SetupRings();
         }
 
     }
