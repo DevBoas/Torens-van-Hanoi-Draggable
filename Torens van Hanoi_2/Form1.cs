@@ -97,6 +97,24 @@ namespace Torens_van_Hanoi_2
             Counter.Text = "Moves: " + CurrentMoves.ToString();
         }
 
+        private PictureBox WhichPole2(PictureBox CurrentPole, PictureBox ring, int index)
+        {
+            PictureBox[] poles = { Pole_1, Pole_2, Pole_3 };
+            Point a = ring.Location;
+            int HitBox = 125;
+            int p_x_l_top = poles[index].Location.X - HitBox - (ring.Size.Width / 2);
+            int p_x_r_top = poles[index].Location.X + HitBox + (ring.Size.Width / 2);
+            int p_y_top = poles[index].Location.Y - 50;
+            int p_y_bot = poles[index].Location.Y + Pole_1.Size.Height;
+            if ((a.X >= p_x_l_top) && (a.X <= p_x_r_top) && (a.Y >= p_y_top) && a.Y <= p_y_bot)
+                return poles[index];
+            if (index == 2)
+                return CurrentPole;
+            index++;
+            return WhichPole2(CurrentPole, ring, index);
+        }
+
+        //old
         private PictureBox WhichPole(PictureBox CurrentPole, PictureBox ring)
         {
             Point a = ring.Location;
@@ -139,7 +157,7 @@ namespace Torens_van_Hanoi_2
             int poleInt = RemoveRing(ring);
             PictureBox CurrentPole = matchPole(poleInt);
             current_pole = matchPole(poleInt);
-            targ_pole = WhichPole(CurrentPole, ring);
+            targ_pole = WhichPole2(CurrentPole, ring, 0);
             possible = AddRing(targ_pole, ring);
 
             if (!possible)
