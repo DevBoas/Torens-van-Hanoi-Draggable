@@ -100,11 +100,12 @@ namespace Torens_van_Hanoi_2
         private Boolean checkInSquare(Control activeControl)
         {
             Point a = activeControl.Location;
+            Boolean possible = false;
 
             PictureBox ring = activeControl as PictureBox;
             PictureBox pole = null;
-            PictureBox m_pole = null;
-
+            PictureBox targ_pole = null;
+            
             int HitBox = 125;
 
             int p1_x_l_top = Pole_1.Location.X - HitBox - (activeControl.Size.Width / 2);
@@ -130,8 +131,8 @@ namespace Torens_van_Hanoi_2
                 ///MessageBox.Show("Drag is in dropbox of pole_1");
                 int poleInt = RemoveRing(ring);
                 pole = matchPole(poleInt);
-                m_pole = Pole_1;
-                Boolean possible = AddRing(Pole_1, ring);
+                targ_pole = Pole_1;
+                possible = AddRing(Pole_1, ring);
                 if (possible)
                     inSquare = true;
                 else
@@ -144,8 +145,8 @@ namespace Torens_van_Hanoi_2
                 ///MessageBox.Show("Drag is in dropbox of pole_2");
                 int poleInt = RemoveRing(ring);
                 pole = matchPole(poleInt);
-                m_pole = Pole_2;
-                Boolean possible = AddRing(Pole_2, ring);
+                targ_pole = Pole_2;
+                possible = AddRing(Pole_2, ring);
                 if (possible)
                     inSquare = true;
                 else
@@ -158,15 +159,15 @@ namespace Torens_van_Hanoi_2
                 ///MessageBox.Show("Drag is in dropbox of pole_3");
                 int poleInt = RemoveRing(ring);
                 pole = matchPole(poleInt);
-                m_pole = Pole_3;
-                Boolean possible = AddRing(Pole_3, ring);
+                targ_pole = Pole_3;
+                possible = AddRing(Pole_3, ring);
                 if (possible)
                     inSquare = true;
                 else
                     AddRing(pole, ring);
             }
 
-            if ((pole != null) && (m_pole != null) && (pole != m_pole) && inSquare)
+            if (possible && (pole != targ_pole))
                 addMove();
 
             return inSquare;
