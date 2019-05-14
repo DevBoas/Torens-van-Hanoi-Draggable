@@ -59,24 +59,25 @@ namespace Torens_van_Hanoi_2
             return c * ring.Height;
         }
 
-        private Boolean CanPickUp(Control con)
+        private Boolean CanPickUp(Control c)
         {
-            PictureBox ring = con as PictureBox;
-            int RingNum = System.Convert.ToInt32(ring.Name.Substring(ring.Name.Length - 1));
-            //MessageBox.Show("Attempting to pickup ring" + RingNum.ToString());
-            int found = -1;
+            PictureBox ring = c as PictureBox;
+            int num = System.Convert.ToInt32(ring.Name.Substring(ring.Name.Length - 1));
+            //Debug.WriteLine("Attempting to pickup ring" + num.ToString());
             for (int i = 0; i < jaggedArray3.Length; i++)
             {
-                for (int y = 0; y < jaggedArray3[i].Length; y++)
+                for (int j = jaggedArray3[i].Length - 1; j >= 0; j--)
                 {
-                    if ((found == i) && (jaggedArray3[i][y] > 0))
-                        return false;
-                    if (jaggedArray3[i][y] == RingNum)
-                        found = i;
+                    if (jaggedArray3[i][j] != 0)
+                    {
+                        if (jaggedArray3[i][j] == num)
+                            return true;
+                        break;
+                    }
                 }
             }
-            return true;
-        }  
+            return false;
+        }
 
         private PictureBox matchPole(int num)
         {
